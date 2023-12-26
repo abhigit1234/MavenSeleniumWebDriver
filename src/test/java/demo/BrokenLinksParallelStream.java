@@ -1,6 +1,7 @@
 package demo;
 
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +42,7 @@ public class BrokenLinksParallelStream {
 	public static void brokenlink(String linkurl) {
 		try {
 
-			URL url = new URL(linkurl);
+			URL url = new URI(linkurl).toURL();
 			HttpURLConnection httpconnection = (HttpURLConnection) url.openConnection();
 			httpconnection.connect();
 			if (httpconnection.getResponseCode() >= 400) {
